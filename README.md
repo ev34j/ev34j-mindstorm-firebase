@@ -48,7 +48,7 @@ The robot is controlled with these keystrokes:
 
 ## Warnings
 
-### Slow performan
+### Slow performance
 
 The robot app startup time on a EV3 is painfully slow.
 After starting the app you will hear it say "initialized" after ~35 secs.
@@ -61,8 +61,8 @@ Performance on a BrickPi with a Raspi 2 or 3 is much better.
 
 ### Zombie processes
 
-If you do not cleanly exit the robot app with the keyboard controller,
-you will need to login to the EV3 and kill the robot java process manually:
+If you do not cleanly exit the robot app with the keyboard controller (type X X),
+you will need to ssh into the EV3 and kill the robot java process manually:
 
 ```bash
 $ ssh robot@ev3dev
@@ -70,6 +70,9 @@ robot@ev3dev:~$ ps -aef | grep java
 robot     1069  1067 78 19:32 ?        00:00:54 java -jar firebaserobot-jar-with-dependencies.jar
 robot     1108  1101  0 19:34 pts/0    00:00:00 grep java
 robot@ev3dev:~$ kill -9 1069
+robot@ev3dev:~$ # Confirm process was stopped
+robot@ev3dev:~$ ps -aef | grep java
+robot     1108  1101  0 19:34 pts/0    00:00:00 grep java
 ```
 
 In this case the robot java process PID was 1069.

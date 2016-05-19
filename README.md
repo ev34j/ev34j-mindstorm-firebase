@@ -2,12 +2,12 @@
 
 ## System setup
 
-The setup is the same as described in the
+The setup is the same as the
 [Ev34J Mindstorm Tutorial](https://github.com/ev34j/ev34j-mindstorm-tutorial#system-setup).
 
 ## Running the app
 
-Run the robot with:
+Run the robot app with:
 
 ```bash
 $ # Build the uber-jars
@@ -22,6 +22,7 @@ $ make run
 Run the keyboard controller with:
 ```bash
 $ # Build the uber-jars
+$ make clean build
 $ java -jar target/keyboardcontroller-jar-with-dependencies.jar
 ```
 
@@ -39,9 +40,36 @@ The robot is controlled with these keystrokes:
 | Shift-Down-Arrow     | Decrease power by 20%           |
 | Shift-Left-Arrow     | Increase steering by 20%        |
 | Shift-Right-Arrow    | Decrease steering right by 20%  |
-| s or S               | Steering set to straight        |
-| h or H               | Halts motors                    |
+| s or S               | Set steering to straight        |
+| h or H               | Halt motors                     |
 | r or R               | Reset motors                    |
-| x or X twice         | Robot exits                     |
+| x or X twice         | Robot app exits                 |
 
 
+## Warnings
+
+### Slow performan
+
+The robot app startup time on a EV3 is painfully slow.
+After starting the app you will hear it say "initialized" after ~35 secs.
+Eventually (~3 minutes) it will say "processing keystrokes" when it is ready for input.
+The latency for sending the keystrokes and robot metrics is very good.
+
+The slow startup time is due to negotiating the https connection with Firebase.
+
+Performance on a BrickPi with a Raspi 2 or 3 is much better.
+
+### Zombie processes
+
+If you do not cleanly exit the robot app with the keyboard controller,
+you will need to login to the EV3 and kill the robot java process manually:
+
+```bash
+$ ssh robot@ev3dev
+robot@ev3dev:~$ ps -aef | grep java
+robot     1069  1067 78 19:32 ?        00:00:54 java -jar firebaserobot-jar-with-dependencies.jar
+robot     1108  1101  0 19:34 pts/0    00:00:00 grep java
+robot@ev3dev:~$ kill -9 1069
+```
+
+In this case the robot java process PID was 1069.

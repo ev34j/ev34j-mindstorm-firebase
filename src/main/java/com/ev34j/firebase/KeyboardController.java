@@ -77,7 +77,7 @@ public class KeyboardController {
                           @Override
                           public void onComplete(final FirebaseError error, final Firebase firebase) {
                             if (error != null)
-                              System.out.println(format("Data not writter: %s", error.getMessage()));
+                              System.err.println(format("Data not writter: %s", error.getMessage()));
                           }
                         };
 

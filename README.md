@@ -40,10 +40,10 @@ The robot is controlled with these keystrokes:
 | Shift-Down-Arrow     | Decrease power by 20%           |
 | Shift-Left-Arrow     | Increase steering by 20%        |
 | Shift-Right-Arrow    | Decrease steering right by 20%  |
-| s or S               | Set steering to straight        |
-| h or H               | Halt motors                     |
-| r or R               | Reset motors                    |
-| x or X twice         | Robot app exits                 |
+| s/S                  | Set steering to straight        |
+| h/H                  | Halt motors                     |
+| r/R                  | Reset motors                    |
+| q/Q twice            | Robot app exits                 |
 
 
 ## Warnings
@@ -56,12 +56,11 @@ Eventually (~3 minutes) it will say "processing keystrokes" when it is ready for
 The latency for sending the keystrokes and robot metrics is very good.
 
 The slow startup time is due to negotiating the https connection with Firebase.
-
-Performance on a BrickPi with a Raspi 2 or 3 is much better.
+Performance on a BrickPi+ with a Raspi 2 is much better -- less than 10 secs)
 
 ### Zombie processes
 
-If you do not cleanly exit the robot app with the keyboard controller (type X X),
+If you do not cleanly exit the robot app with the keyboard controller (by typing q q),
 you will need to ssh into the EV3 and kill the robot java process manually:
 
 ```bash

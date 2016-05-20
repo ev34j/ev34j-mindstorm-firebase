@@ -31,12 +31,10 @@ public class FirebaseRobot {
 
   public static void main(final String[] args)
       throws InterruptedException {
-    final FirebaseRobot robot = new FirebaseRobot();
-    if (!Platform.isUnknown())
-      Ev3Sound.say("Initialized", 100);
-    System.out.println("Initialized");
 
+    final FirebaseRobot robot = new FirebaseRobot();
     robot.waitUntilFinished();
+
     System.out.println("Exiting");
     System.exit(0);
   }
@@ -68,7 +66,7 @@ public class FirebaseRobot {
   private final Firebase       firebase;
 
   public FirebaseRobot() {
-    this.motors = Platform.isUnknown() ? null : new SteeringMotors("A", "B");
+    this.motors = new SteeringMotors("A", "B");
     this.firebase = new Firebase(Constants.FIREBASE_URL);
     this.firebase.getRoot()
                  .child(DEFAULT_USER)
@@ -94,50 +92,54 @@ public class FirebaseRobot {
                        }
                      });
 
-    if (Platform.isEv3Brick())
-      this.executor.execute(
-          new Runnable() {
-            @Override
-            public void run() {
-              while (!exit.get()) {
-                // Do not send duplicate  values
-                final int steering1 = motors.getSteering();
-                if (steering1 != lastSteering) {
-                  reportMetric(STEERING, steering1);
-                  lastSteering = steering1;
-                }
-
-                final int power1 = motors.getPower1();
-                if (power1 != lastPower1) {
-                  reportMetric(POWER1, power1);
-                  lastPower1 = power1;
-                }
-
-                final int power2 = motors.getPower2();
-                if (power2 != lastPower2) {
-                  reportMetric(POWER2, power2);
-                  lastPower2 = power2;
-                }
-
-                final int position1 = motors.getPosition1();
-                if (position1 != lastPosition1) {
-                  reportMetric(POSITION1, position1);
-                  lastPosition1 = position1;
-                }
-
-                final int position2 = motors.getPosition2();
-                if (position2 != lastPosition2) {
-                  reportMetric(POSITION2, position2);
-                  lastPosition2 = position2;
-                }
-
-                Wait.forMillis(500);
+    this.executor.execute(
+        new Runnable() {
+          @Override
+          public void run() {
+            while (!exit.get()) {
+              // Do not send duplicate  values
+              final int steering1 = motors.getSteering();
+              if (steering1 != lastSteering) {
+                reportMetric(STEERING, steering1);
+                lastSteering = steering1;
               }
 
-              System.out.println("Discontinue metric reporting");
-              complete.countDown();
+              final int power1 = motors.getPower1();
+              if (power1 != lastPower1) {
+                reportMetric(POWER1, power1);
+                lastPower1 = power1;
+              }
+
+              final int power2 = motors.getPower2();
+              if (power2 != lastPower2) {
+                reportMetric(POWER2, power2);
+                lastPower2 = power2;
+              }
+
+              final int position1 = motors.getPosition1();
+              if (position1 != lastPosition1) {
+                reportMetric(POSITION1, position1);
+                lastPosition1 = position1;
+              }
+
+              final int position2 = motors.getPosition2();
+              if (position2 != lastPosition2) {
+                reportMetric(POSITION2, position2);
+                lastPosition2 = position2;
+              }
+
+              Wait.forMillis(500);
             }
-          });
+
+            System.out.println("Discontinue metric reporting");
+            complete.countDown();
+          }
+        });
+
+    if (Platform.isEv3Brick())
+      Ev3Sound.say("Initialized", 100);
+    this.reportAction("Initialized");
+    System.out.println("Initialized");
   }
 
   private void reportMetric(final String metric, final int value) {
@@ -158,15 +160,14 @@ public class FirebaseRobot {
   }
 
   private void processKeyStroke(final KeyboardData data) {
-    // System.out.println("Type: " + data.getKeyType());
     // Prevent acting on keystrokes that occur before startup
-    if (Platform.isUnknown() || data.getTimeStamp() + 5000 < startTime.get())
+    if (data.getTimeStamp() + 5000 < startTime.get())
       return;
 
     switch (data.getKeyType()) {
-      // Exit after two presses in a row
-      case LOWER_X:
-      case UPPER_X:
+      // Exit after two Q presses in a row
+      case LOWER_Q:
+      case UPPER_Q:
         this.exitCommand++;
         if (this.exitCommand >= 2) {
           this.reportAction("Exiting");

@@ -31,7 +31,7 @@ $ java -jar target/keyboardcontroller-jar-with-dependencies.jar
 The robot is controlled with these keystrokes:
 
 | Keystoke             | Action                          |
-| -------------------- | ------------------------------- |
+|:---------------------|:--------------------------------|
 | Up-Arrow             | Increase power by 10%           |
 | Down-Arrow           | Decrease power by 10%           |
 | Left-Arrow           | Increase steering by 10%        |

@@ -10,11 +10,11 @@ The setup is the same as the
 Run the robot app with:
 
 ```bash
-$ # Build the uber-jars
+$ # Build the jars
 $ make clean build
-$ # Copy it to your EV3
+$ # Copy it to the EV3
 $ make scp
-$ # Run the app on your EV3
+$ # Run the app on the EV3
 $ make run
 
 ```

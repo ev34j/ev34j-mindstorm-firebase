@@ -11,7 +11,7 @@
 
   <properties>
     <!-- Specify the ev34j version here -->
-    <ev34j.version>v0.1.12</ev34j.version>
+    <ev34j.version>v0.1.13</ev34j.version>
 
     <firebase.version>2.5.2</firebase.version>
 

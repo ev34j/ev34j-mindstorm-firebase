@@ -1,9 +1,9 @@
 package com.ev34j.firebase;
 
-import com.ev34j.core.common.Platform;
-import com.ev34j.mindstorm.motor.SteeringMotors;
-import com.ev34j.mindstorm.sound.Ev3Sound;
-import com.ev34j.mindstorm.time.Wait;
+import com.ev34j.core.system.Platform;
+import com.ev34j.mindstorms.motor.SteeringMotors;
+import com.ev34j.mindstorms.sound.Ev3Sound;
+import com.ev34j.mindstorms.time.Wait;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;

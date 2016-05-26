@@ -1,5 +1,8 @@
 # EV34J Mindstorm Firebase Example
 
+[![Build Status](https://travis-ci.org/ev34j/ev34j-mindstorm-firebase.svg?branch=master)](https://travis-ci.org/ev34j/ev34j-mindstorm-firebase)
+
+
 ## System setup
 
 The setup is the same as the

@@ -6,7 +6,7 @@
 ## System setup
 
 The setup is the same as the
-[Ev34J Mindstorm Tutorial](https://github.com/ev34j/ev34j-mindstorm-tutorial#system-setup).
+[ev34j-mindstorm-tutorial repo](https://github.com/ev34j/ev34j-mindstorm-tutorial#system-setup).
 
 ## Running the app
 

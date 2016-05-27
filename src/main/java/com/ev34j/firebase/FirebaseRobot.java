@@ -141,6 +141,7 @@ public class FirebaseRobot {
 
     if (Platform.isEv3Brick())
       Ev3Sound.say("Initialized", 100);
+
     this.reportAction("Initialized");
     System.out.println("Initialized");
     System.out.flush();

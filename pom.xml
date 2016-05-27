@@ -5,13 +5,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.github.ev34j</groupId>
-  <artifactId>ev34j-mindstorm-firebase</artifactId>
+  <artifactId>ev34j-mindstorms-firebase</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
 
   <properties>
     <!-- Specify the ev34j version here -->
-    <ev34j.version>v0.1.18</ev34j.version>
+    <ev34j.version>v0.1.19</ev34j.version>
 
     <firebase.version>2.5.2</firebase.version>
 

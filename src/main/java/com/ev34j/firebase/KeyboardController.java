@@ -42,28 +42,28 @@ public class KeyboardController {
     panel.setLayout(new GridLayout(10, 1, 5, 5));
 
     final JLabel keyPressed = new JLabel();
-    final JLabel action = new JLabel();
-    final JLabel steering = new JLabel();
-    final JLabel power1 = new JLabel();
-    final JLabel power2 = new JLabel();
-    final JLabel position1 = new JLabel();
-    final JLabel position2 = new JLabel();
+    final JLabel actionLabel = new JLabel();
+    final JLabel steeringLabel = new JLabel();
+    final JLabel power1Label = new JLabel();
+    final JLabel power2Label = new JLabel();
+    final JLabel position1Label = new JLabel();
+    final JLabel position2Label = new JLabel();
 
     keyPressed.setText(" " + KEY_PRESSED_PREFIX);
-    action.setText(" " + ACTION_PREFIX);
-    steering.setText(" " + STEERING_PREFIX);
-    power1.setText(" " + POWER1_PREFIX);
-    power2.setText(" " + POWER2_PREFIX);
-    position1.setText(" " + POSITION1_PREFIX);
-    position2.setText(" " + POSITION2_PREFIX);
+    actionLabel.setText(" " + ACTION_PREFIX);
+    steeringLabel.setText(" " + STEERING_PREFIX);
+    power1Label.setText(" " + POWER1_PREFIX);
+    power2Label.setText(" " + POWER2_PREFIX);
+    position1Label.setText(" " + POSITION1_PREFIX);
+    position2Label.setText(" " + POSITION2_PREFIX);
 
     panel.add(keyPressed);
-    panel.add(action);
-    panel.add(steering);
-    panel.add(power1);
-    panel.add(power2);
-    panel.add(position1);
-    panel.add(position2);
+    panel.add(actionLabel);
+    panel.add(steeringLabel);
+    panel.add(power1Label);
+    panel.add(power2Label);
+    panel.add(position1Label);
+    panel.add(position2Label);
 
     for (final KeyType type : KeyType.values()) {
       panel.getActionMap()
@@ -102,19 +102,19 @@ public class KeyboardController {
                       final int value = child.getValue(RobotMetric.class).getValue();
                       switch (metric) {
                         case STEERING:
-                          steering.setText(format(" %s %s", STEERING_PREFIX, value));
+                          steeringLabel.setText(format(" %s %s", STEERING_PREFIX, value));
                           break;
                         case POWER1:
-                          power1.setText(format(" %s %s", POWER1_PREFIX, value));
+                          power1Label.setText(format(" %s %s", POWER1_PREFIX, value));
                           break;
                         case POWER2:
-                          power2.setText(format(" %s %s", POWER2_PREFIX, value));
+                          power2Label.setText(format(" %s %s", POWER2_PREFIX, value));
                           break;
                         case POSITION1:
-                          position1.setText(format(" %s %s", POSITION1_PREFIX, value));
+                          position1Label.setText(format(" %s %s", POSITION1_PREFIX, value));
                           break;
                         case POSITION2:
-                          position2.setText(format(" %s %s", POSITION2_PREFIX, value));
+                          position2Label.setText(format(" %s %s", POSITION2_PREFIX, value));
                           break;
                       }
                     }
@@ -133,8 +133,9 @@ public class KeyboardController {
                 new ValueEventListener() {
                   @Override
                   public void onDataChange(final DataSnapshot dataSnapshot) {
-                    final String val = dataSnapshot.getValue(RobotAction.class).getAction();
-                    action.setText(format(" %s %s", ACTION_PREFIX, val));
+                    final RobotAction action = dataSnapshot.getValue(RobotAction.class);
+                    if (action != null)
+                      actionLabel.setText(format(" %s %s", ACTION_PREFIX, action.getAction()));
                   }
 
                   @Override

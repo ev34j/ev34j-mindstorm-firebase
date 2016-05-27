@@ -81,6 +81,7 @@ public class FirebaseRobot {
                            if (Platform.isEv3Brick())
                              Ev3Sound.say("Processing keystrokes", 100);
                            System.out.println("Processing keystrokes");
+                           System.out.flush();
                          }
 
                          processKeyStroke(data);
@@ -89,6 +90,7 @@ public class FirebaseRobot {
                        @Override
                        public void onCancelled(final FirebaseError error) {
                          System.out.println(String.format("ValueEventListener.onCancelled() : %s", error.getMessage()));
+                         System.out.flush();
                        }
                      });
 
@@ -132,6 +134,7 @@ public class FirebaseRobot {
             }
 
             System.out.println("Discontinue metric reporting");
+            System.out.flush();
             complete.countDown();
           }
         });
@@ -140,6 +143,7 @@ public class FirebaseRobot {
       Ev3Sound.say("Initialized", 100);
     this.reportAction("Initialized");
     System.out.println("Initialized");
+    System.out.flush();
   }
 
   private void reportMetric(final String metric, final int value) {
@@ -161,7 +165,7 @@ public class FirebaseRobot {
 
   private void processKeyStroke(final KeyboardData data) {
     // Prevent acting on keystrokes that occur before startup
-    if (data.getTimeStamp() + 5000 < startTime.get())
+    if (data == null || data.getTimeStamp() + 5000 < startTime.get())
       return;
 
     switch (data.getKeyType()) {

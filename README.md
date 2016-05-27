@@ -1,4 +1,4 @@
-# EV34J Mindstorm Firebase Example
+# EV34J Mindstorms Firebase Example
 
 [![Build Status](https://travis-ci.org/ev34j/ev34j-mindstorms-firebase.svg?branch=master)](https://travis-ci.org/ev34j/ev34j-mindstorms-firebase)
 

@@ -1,4 +1,4 @@
-# EV34J Mindstorms Firebase Example
+# ev34j-mindstorms Firebase Demo
 
 [![Build Status](https://travis-ci.org/ev34j/ev34j-mindstorms-firebase.svg?branch=master)](https://travis-ci.org/ev34j/ev34j-mindstorms-firebase)
 
@@ -19,7 +19,6 @@ $ # Copy it to the EV3
 $ make scp
 $ # Run the app on the EV3
 $ make run
-
 ```
 
 Run the keyboard controller with:

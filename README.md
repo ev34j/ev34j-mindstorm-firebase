@@ -10,7 +10,7 @@ The setup is the same as the
 ## Scenario
 
 In this demo, a robot is driven from keystrokes via Firebase messages. Similarly,
-the robot reports its metrics via Firebase.
+the robot reports its metrics back to an app via Firebase
 
 ## Running the app
 

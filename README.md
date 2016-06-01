@@ -9,8 +9,8 @@ The setup is the same as the
 
 ## Scenario
 
-In this demo, a robot is driven from keystrokes via Firebase messages. Similarly,
-the robot reports its metrics back to an app via Firebase
+In this demo, a robot is controlled by keyboard commands via Firebase messages. Similarly,
+the robot reports its metrics back to an app via Firebase.
 
 ## Running the app
 

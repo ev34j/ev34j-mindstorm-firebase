@@ -2,11 +2,15 @@
 
 [![Build Status](https://travis-ci.org/ev34j/ev34j-mindstorms-firebase.svg?branch=master)](https://travis-ci.org/ev34j/ev34j-mindstorms-firebase)
 
-
 ## System setup
 
 The setup is the same as the
 [ev34j-mindstorms-tutorial repo](https://github.com/ev34j/ev34j-mindstorms-tutorial#system-setup).
+
+## Scenario
+
+In this demo, a robot is driven from keystrokes via Firebase messages. Similarly,
+the robot reports its metrics via Firebase.
 
 ## Running the app
 
